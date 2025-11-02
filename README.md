@@ -40,7 +40,7 @@ This project tackles two interconnected challenges:
 - **Models**: DistilBERT, BLIP-2, Florence-2, Mistral-7B-Instruct, XGBoost, LightGBM
 - **Frameworks**: PyTorch, Transformers, LoRA
 - **Data Processing**: Pandas, NumPy
-- **Evaluation**: RMSE, ROUGE, BLEU, CIDER
+- **Evaluation**: RMSE, ROUGE
 
 ## 📈 Key Findings
 
@@ -54,7 +54,7 @@ This project tackles two interconnected challenges:
 [Drive Dataset](https://drive.google.com/drive/folders/1Vd-GsBlN0Z3p8aDxxTV7iIjgpbxP1d8b?usp=sharing)
 ## 🔮 Future Directions
 
-- Train multimodal regression on full 300K dataset (currently limited to 3K due to broken URLs)
+- Train multimodal regression on full 300K dataset (currently limited to 13K due to broken URLs)
 - Implement temporal-aware video embeddings
 - Build self-improving feedback loop: Generate → Predict → Reinforce
 - Add explainability layer (SHAP/LIME) for actionable marketing insights
