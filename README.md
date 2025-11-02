@@ -49,6 +49,9 @@ This project tackles two interconnected challenges:
 3. **Vision-Language grounding essential** for meaningful tweet generation
 4. **Data quality matters**: Broken media URLs significantly limited full-scale training
 
+## Dataset
+**Our used dataset** along with the **LoRA Weights**, can be accessed via the following drive link:
+[Drive Dataset](https://drive.google.com/drive/folders/1Vd-GsBlN0Z3p8aDxxTV7iIjgpbxP1d8b?usp=sharing)
 ## 🔮 Future Directions
 
 - Train multimodal regression on full 300K dataset (currently limited to 3K due to broken URLs)
