@@ -52,8 +52,7 @@ This project tackles two interconnected challenges:
 ## Dataset
 **Our used dataset** along with the **LoRA Weights**, can be accessed via the following drive link:
 [Drive Dataset](https://drive.google.com/drive/folders/1Vd-GsBlN0Z3p8aDxxTV7iIjgpbxP1d8b?usp=sharing)
-## 🔮 Future Directions
-
+## 🔮 Future Direction
 - Train multimodal regression on full 300K dataset (currently limited to 13K due to broken URLs)
 - Implement temporal-aware video embeddings
 - Build self-improving feedback loop: Generate → Predict → Reinforce
