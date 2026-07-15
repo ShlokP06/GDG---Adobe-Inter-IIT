@@ -1,69 +1,67 @@
 # Adobe Content Intelligence Simulator
 
-**Inter IIT Tech Meet Madras Challenge | GDG Club, IIT Indore**
+**Inter IIT Tech Meet Madras Challenge · GDG Club, IIT Indore**
 
-A closed-loop AI system for social media marketing that combines **behavior prediction** and **content generation** to optimize engagement on enterprise Twitter accounts.
+A closed-loop AI system for social media marketing combining engagement
+prediction and content generation to optimize enterprise Twitter posts.
 
-## 🎯 Overview
+## Overview
 
-This project tackles two interconnected challenges:
-- **Task 1 (Behavior Simulation)**: Predict the number of likes a tweet will receive based on multimodal context (text, images, metadata)
-- **Task 2 (Content Simulation)**: Generate high-quality, engagement-optimized tweet text conditioned on visual media and target engagement metrics
+Two interconnected tasks:
+- **Task 1 (Behavior Simulation)** — predict how many likes a tweet will
+  receive from multimodal context (text, images, metadata).
+- **Task 2 (Content Simulation)** — generate engagement-optimized tweet
+  text conditioned on visual media and target engagement metrics.
 
-## 📊 Key Components
+## Approach
 
-### Task 1: Engagement Prediction
-- **Baseline Approach**: Text + metadata regression (Ridge/XGBoost) → R² = 0.17
-- **Final Approach**: Multimodal fusion using DistilBERT embeddings + BLIP-2 visual embeddings with log-transformed targets
-- **Challenge**: Power-law distribution of engagement data; addressed through log-transformation
+**Task 1 — Engagement prediction**
+- Baseline: text + metadata regression (Ridge/XGBoost) → R² = 0.17.
+- Final: multimodal fusion of DistilBERT text embeddings + BLIP-2 visual
+  embeddings, with log-transformed targets to handle the power-law
+  distribution of engagement data.
 
-### Task 2: Tweet Generation  
-- **Baseline**: Mistral-7B-Instruct without visual grounding → generic outputs
-- **Final Pipeline**: 
-  - Florence-2 for high-quality image/video captioning
-  - Entropy-based keyframe selection for video posts
-  - LoRA fine-tuned Mistral-7B-Instruct v0.2
-  - Post-processing for artifact removal
-- **Results**: Perplexity reduced from 10.12 → 3.63; ROUGE-4 = 0.57
+**Task 2 — Tweet generation**
+- Baseline: Mistral-7B-Instruct with no visual grounding → generic output.
+- Final pipeline: Florence-2 for image/video captioning, entropy-based
+  keyframe selection for video posts, a LoRA-fine-tuned
+  Mistral-7B-Instruct-v0.2, and post-processing for artifact removal.
+- Result: perplexity reduced 10.12 → 3.63, ROUGE-4 = 0.57.
 
-## 👥 Team
+## Key findings
 
-| Name | Role |
-|------|------|
-| **Ketki Patil** | Task 1 Implementation |
-| **Sanskriti Jain** | Task 1 Implementation |
-| **Shlok Parikh** | Task 2 Implementation |
-| **Yogendra Singh** | Task 2 Implementation |
-
-## 🛠️ Tech Stack
-
-- **Models**: DistilBERT, BLIP-2, Florence-2, Mistral-7B-Instruct, XGBoost, LightGBM
-- **Frameworks**: PyTorch, Transformers, LoRA
-- **Data Processing**: Pandas, NumPy
-- **Evaluation**: RMSE, ROUGE
-
-## 📈 Key Findings
-
-1. **Visual context is indispensable** for engagement prediction; text-only models fail (R² = 0.17)
-2. **Log-transformation critical** for handling skewed engagement distributions (mean = 718, median = 73)
-3. **Vision-Language grounding essential** for meaningful tweet generation
-4. **Data quality matters**: Broken media URLs significantly limited full-scale training
+- Visual context is necessary for engagement prediction — text-only models
+  fail (R² = 0.17).
+- Log-transformation is critical for the skewed engagement distribution
+  (mean = 718, median = 73 likes).
+- Vision-language grounding is essential for meaningful tweet generation.
+- Broken media URLs significantly limited full-scale training.
 
 ## Dataset
-**Our used dataset** along with the **LoRA Weights**, can be accessed via the following drive link:
-[Drive Dataset](https://drive.google.com/drive/folders/1Vd-GsBlN0Z3p8aDxxTV7iIjgpbxP1d8b?usp=sharing)
-## 🔮 Future Direction
-- Train multimodal regression on full 300K dataset (currently limited to 13K due to broken URLs)
-- Implement temporal-aware video embeddings
-- Build self-improving feedback loop: Generate → Predict → Reinforce
-- Add explainability layer (SHAP/LIME) for actionable marketing insights
 
-## 📝 Dataset
+~300K enterprise tweets (2018–2023) from the Adobe Experience Cloud
+challenge dataset — date, company, username, timestamp, tweet text, media
+URLs, likes. Training was limited to ~13K of the 300K due to broken media
+URLs. [Dataset + LoRA weights](https://drive.google.com/drive/folders/1Vd-GsBlN0Z3p8aDxxTV7iIjgpbxP1d8b?usp=sharing).
 
-- **Size**: ~300K enterprise tweets (2018-2023)
-- **Features**: Date, company, username, timestamp, tweet text, media URLs, likes
-- **Source**: Adobe Experience Cloud challenge data
+## Stack
 
----
+`DistilBERT` · `BLIP-2` · `Florence-2` · `Mistral-7B-Instruct` · `LoRA` ·
+`XGBoost` · `PyTorch` · `Transformers`
 
-*This project validates a multimodal pipeline for both forecasting social media engagement and creating optimized brand-consistent content, offering a strong baseline for AI-assisted marketing tools.*
+## Team
+
+| Name | Role |
+|---|---|
+| Ketki Patil | Task 1 |
+| Sanskriti Jain | Task 1 |
+| Shlok Parikh | Task 2 |
+| Yogendra Singh | Task 2 |
+
+## Future direction
+
+- Train the multimodal regressor on the full 300K dataset once broken
+  media URLs are resolved.
+- Temporal-aware video embeddings.
+- Closed feedback loop: generate → predict → reinforce.
+- SHAP/LIME explainability layer for marketing-actionable insights.
